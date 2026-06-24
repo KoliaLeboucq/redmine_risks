@@ -1,0 +1,62 @@
+<%= error_messages_for risk %>
+
+<div class="box tabular">
+  <p>
+    <%= f.label :title, l(:field_title) %><br>
+    <%= f.text_field :title, size: 60, required: true %>
+  </p>
+  <p>
+    <%= f.label :description, l(:field_description) %><br>
+    <%= f.text_area :description, rows: 4, cols: 60 %>
+  </p>
+  <p>
+    <%= f.label :cause, l(:label_risk_cause) %><br>
+    <%= f.text_area :cause, rows: 3, cols: 60 %>
+  </p>
+  <p>
+    <%= f.label :consequence, l(:label_risk_consequence) %><br>
+    <%= f.text_area :consequence, rows: 3, cols: 60 %>
+  </p>
+  <p>
+    <%= f.label :category, l(:label_risk_category) %><br>
+    <%= f.select :category, Risk::CATEGORIES.map { |c| [l(:"risk_category_#{c}"), c] } %>
+  </p>
+  <p>
+    <%= f.label :status, l(:field_status) %><br>
+    <%= f.select :status, Risk::STATUSES.map { |s| [l(:"risk_status_#{s}"), s] } %>
+  </p>
+  <p>
+    <%= f.label :assigned_to_id, l(:label_risk_assigned_to) %><br>
+    <%= f.select :assigned_to_id,
+          [['', nil]] + @project.members.map { |m| [m.user.name, m.user.id] },
+          include_blank: true %>
+  </p>
+  <p>
+    <%= f.label :review_date, l(:label_risk_review_date) %><br>
+    <%= f.date_field :review_date %>
+  </p>
+</div>
+
+<h4><%= l(:label_risk_initial_eval) %></h4>
+<div class="box tabular">
+  <p>
+    <%= f.label :initial_probability, l(:label_risk_probability) %><br>
+    <%= f.select :initial_probability, (1..5).map { |v| [l(:"risk_probability_#{v}") + " (#{v})", v] } %>
+  </p>
+  <p>
+    <%= f.label :initial_impact, l(:label_risk_impact) %><br>
+    <%= f.select :initial_impact, (1..5).map { |v| [l(:"risk_impact_#{v}") + " (#{v})", v] } %>
+  </p>
+</div>
+
+<h4><%= l(:label_risk_current_eval) %></h4>
+<div class="box tabular">
+  <p>
+    <%= f.label :current_probability, l(:label_risk_probability) %><br>
+    <%= f.select :current_probability, (1..5).map { |v| [l(:"risk_probability_#{v}") + " (#{v})", v] } %>
+  </p>
+  <p>
+    <%= f.label :current_impact, l(:label_risk_impact) %><br>
+    <%= f.select :current_impact, (1..5).map { |v| [l(:"risk_impact_#{v}") + " (#{v})", v] } %>
+  </p>
+</div>

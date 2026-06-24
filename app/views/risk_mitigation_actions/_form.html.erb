@@ -1,0 +1,36 @@
+<%= error_messages_for action %>
+
+<div class="box tabular">
+  <p>
+    <%= f.label :title, l(:field_title) %><br>
+    <%= f.text_field :title, size: 60, required: true %>
+  </p>
+  <p>
+    <%= f.label :description, l(:field_description) %><br>
+    <%= f.text_area :description, rows: 3, cols: 60 %>
+  </p>
+  <p>
+    <%= f.label :action_type, l(:label_action_type) %><br>
+    <%= f.select :action_type,
+          RiskMitigationAction::ACTION_TYPES.map { |t| [l(:"action_type_#{t}"), t] } %>
+  </p>
+  <p>
+    <%= f.label :status, l(:field_status) %><br>
+    <%= f.select :status,
+          RiskMitigationAction::STATUSES.map { |s| [l(:"action_status_#{s}"), s] } %>
+  </p>
+  <p>
+    <%= f.label :assigned_to_id, l(:label_risk_assigned_to) %><br>
+    <%= f.select :assigned_to_id,
+          [['', nil]] + @project.members.map { |m| [m.user.name, m.user.id] },
+          include_blank: true %>
+  </p>
+  <p>
+    <%= f.label :due_date, l(:label_due_date) %><br>
+    <%= f.date_field :due_date %>
+  </p>
+  <p>
+    <%= f.label :issue_id, l(:label_linked_issue) %><br>
+    <%= f.number_field :issue_id, placeholder: l(:label_issue_id_optional) %>
+  </p>
+</div>

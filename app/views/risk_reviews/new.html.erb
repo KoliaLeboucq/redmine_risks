@@ -1,0 +1,30 @@
+<h2><%= l(:label_review_new) %> — <%= @risk.title %></h2>
+
+<%= form_with model: [@risk, @review], url: risk_risk_reviews_path(@risk) do |f| %>
+  <%= error_messages_for @review %>
+
+  <div class="box tabular">
+    <p>
+      <%= f.label :reviewed_at, l(:label_review_date) %><br>
+      <%= f.datetime_local_field :reviewed_at %>
+    </p>
+    <p>
+      <%= f.label :probability, l(:label_risk_probability) %><br>
+      <%= f.select :probability, (1..5).map { |v| [l(:"risk_probability_#{v}") + " (#{v})", v] } %>
+    </p>
+    <p>
+      <%= f.label :impact, l(:label_risk_impact) %><br>
+      <%= f.select :impact, (1..5).map { |v| [l(:"risk_impact_#{v}") + " (#{v})", v] } %>
+    </p>
+    <p>
+      <%= f.label :comment, l(:label_comment) %><br>
+      <%= f.text_area :comment, rows: 4, cols: 60 %>
+    </p>
+    <p>
+      <%= f.label :decision, l(:label_decision) %><br>
+      <%= f.text_area :decision, rows: 3, cols: 60 %>
+    </p>
+  </div>
+
+  <p><%= f.submit l(:button_save) %></p>
+<% end %>

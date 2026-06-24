@@ -1,0 +1,76 @@
+en:
+  label_risks:               Risks
+  label_risk_new:            New risk
+  label_risk_edit:           Edit risk
+  label_risk_dashboard:      Risk dashboard
+  label_risk_category:       Category
+  label_risk_assigned_to:    Owner
+  label_risk_cause:          Cause
+  label_risk_consequence:    Consequence
+  label_risk_probability:    Probability
+  label_risk_impact:         Impact
+  label_risk_score:          Score
+  label_risk_initial_score:  Initial score
+  label_risk_current_score:  Current score
+  label_risk_trend:          Trend
+  label_risk_review_date:    Review date
+  label_risk_initial_eval:   Initial assessment (pre-sales)
+  label_risk_current_eval:   Current assessment
+  label_risk_mitigation_actions: Mitigation actions
+  label_risk_review_history: Review history
+  label_risks_open:          Open risks
+  label_risks_critical:      Critical risks
+  label_risks_rising:        Rising risks
+  label_risks_overdue_review: Overdue reviews
+  label_risks_no_action:     Risks without actions
+  label_recent_risks:        Recent risks
+  label_review_new:          New review
+  label_review_date:         Review date
+  label_action_new:          New mitigation action
+  label_action_edit:         Edit action
+  label_action_type:         Action type
+  label_linked_issue:        Linked issue
+  label_issue_id_optional:   "Issue # (optional)"
+  label_no_reviews_yet:      No reviews recorded yet
+  label_comment:             Comment
+  label_decision:            Decision
+  label_due_date:            Due date
+  label_all:                 All
+
+  notice_risk_created:  Risk was successfully created.
+  notice_review_saved:  Review was successfully saved.
+  notice_action_created: Mitigation action was successfully created.
+
+  risk_status_open:      Open
+  risk_status_mitigated: Mitigated
+  risk_status_accepted:  Accepted
+  risk_status_closed:    Closed
+
+  risk_category_threat:      Threat
+  risk_category_opportunity: Opportunity
+
+  risk_trend_down:   Decreasing
+  risk_trend_stable: Stable
+  risk_trend_up:     Increasing
+
+  risk_probability_1: Very low
+  risk_probability_2: Low
+  risk_probability_3: Moderate
+  risk_probability_4: High
+  risk_probability_5: Almost certain
+
+  risk_impact_1: Negligible
+  risk_impact_2: Minor
+  risk_impact_3: Moderate
+  risk_impact_4: Major
+  risk_impact_5: Catastrophic
+
+  action_type_reduce_probability: Reduce probability
+  action_type_reduce_impact:      Reduce impact
+  action_type_transfer:           Transfer
+  action_type_accept:             Accept
+
+  action_status_open:        Open
+  action_status_in_progress: In progress
+  action_status_done:        Done
+  action_status_cancelled:   Cancelled

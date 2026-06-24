@@ -1,0 +1,76 @@
+fr:
+  label_risks:               Risques
+  label_risk_new:            Nouveau risque
+  label_risk_edit:           Modifier le risque
+  label_risk_dashboard:      Tableau de bord risques
+  label_risk_category:       Catégorie
+  label_risk_assigned_to:    Responsable
+  label_risk_cause:          Cause
+  label_risk_consequence:    Conséquence
+  label_risk_probability:    Probabilité
+  label_risk_impact:         Impact
+  label_risk_score:          Score
+  label_risk_initial_score:  Score initial
+  label_risk_current_score:  Score actuel
+  label_risk_trend:          Tendance
+  label_risk_review_date:    Date de revue
+  label_risk_initial_eval:   Évaluation initiale (avant vente)
+  label_risk_current_eval:   Évaluation actuelle
+  label_risk_mitigation_actions: Actions de mitigation
+  label_risk_review_history: Historique des réévaluations
+  label_risks_open:          Risques ouverts
+  label_risks_critical:      Risques critiques
+  label_risks_rising:        Risques en hausse
+  label_risks_overdue_review: Revues en retard
+  label_risks_no_action:     Risques sans action
+  label_recent_risks:        Risques récents
+  label_review_new:          Nouvelle réévaluation
+  label_review_date:         Date de la revue
+  label_action_new:          Nouvelle action de mitigation
+  label_action_edit:         Modifier l'action
+  label_action_type:         Type d'action
+  label_linked_issue:        Ticket lié
+  label_issue_id_optional:   "N° ticket (optionnel)"
+  label_no_reviews_yet:      Aucune réévaluation enregistrée
+  label_comment:             Commentaire
+  label_decision:            Décision
+  label_due_date:            Échéance
+  label_all:                 Tous
+
+  notice_risk_created:  Le risque a été créé.
+  notice_review_saved:  La réévaluation a été enregistrée.
+  notice_action_created: L'action de mitigation a été créée.
+
+  risk_status_open:      Ouvert
+  risk_status_mitigated: Mitigé
+  risk_status_accepted:  Accepté
+  risk_status_closed:    Clos
+
+  risk_category_threat:      Menace
+  risk_category_opportunity: Opportunité
+
+  risk_trend_down:   En baisse
+  risk_trend_stable: Stable
+  risk_trend_up:     En hausse
+
+  risk_probability_1: Très faible
+  risk_probability_2: Faible
+  risk_probability_3: Modérée
+  risk_probability_4: Élevée
+  risk_probability_5: Quasi certaine
+
+  risk_impact_1: Négligeable
+  risk_impact_2: Mineur
+  risk_impact_3: Modéré
+  risk_impact_4: Majeur
+  risk_impact_5: Catastrophique
+
+  action_type_reduce_probability: Réduire la probabilité
+  action_type_reduce_impact:      Réduire l'impact
+  action_type_transfer:           Transférer
+  action_type_accept:             Accepter
+
+  action_status_open:        Ouverte
+  action_status_in_progress: En cours
+  action_status_done:        Terminée
+  action_status_cancelled:   Annulée

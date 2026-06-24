@@ -1,0 +1,94 @@
+<h2><%= l(:label_risk_dashboard) %> — <%= @project.name %></h2>
+
+<div class="risk-dashboard">
+  <div class="risk-kpis">
+    <div class="kpi-card">
+      <span class="kpi-value"><%= @open_count %></span>
+      <span class="kpi-label"><%= l(:label_risks_open) %></span>
+    </div>
+    <div class="kpi-card kpi-critical">
+      <span class="kpi-value"><%= @critical_count %></span>
+      <span class="kpi-label"><%= l(:label_risks_critical) %></span>
+    </div>
+    <div class="kpi-card kpi-rising">
+      <span class="kpi-value"><%= @rising_risks.count %></span>
+      <span class="kpi-label"><%= l(:label_risks_rising) %></span>
+    </div>
+    <div class="kpi-card kpi-warning">
+      <span class="kpi-value"><%= @overdue_review %></span>
+      <span class="kpi-label"><%= l(:label_risks_overdue_review) %></span>
+    </div>
+    <div class="kpi-card kpi-warning">
+      <span class="kpi-value"><%= @no_action_open.count %></span>
+      <span class="kpi-label"><%= l(:label_risks_no_action) %></span>
+    </div>
+  </div>
+
+  <% if @rising_risks.any? %>
+    <h3><%= l(:label_risks_rising) %> ▲</h3>
+    <table class="list">
+      <thead>
+        <tr>
+          <th><%= l(:field_title) %></th>
+          <th><%= l(:label_risk_initial_score) %></th>
+          <th><%= l(:label_risk_current_score) %></th>
+          <th><%= l(:label_risk_assigned_to) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @rising_risks.each do |risk| %>
+          <tr>
+            <td><%= link_to risk.title, risk_path(risk) %></td>
+            <td><%= risk_score_badge(risk.initial_score, :low) %></td>
+            <td><%= risk_score_badge(risk.current_score, risk.criticality) %></td>
+            <td><%= risk.assigned_to&.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <% if @no_action_open.any? %>
+    <h3><%= l(:label_risks_no_action) %></h3>
+    <table class="list">
+      <thead>
+        <tr>
+          <th><%= l(:field_title) %></th>
+          <th><%= l(:label_risk_current_score) %></th>
+          <th><%= l(:label_risk_assigned_to) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @no_action_open.each do |risk| %>
+          <tr>
+            <td><%= link_to risk.title, risk_path(risk) %></td>
+            <td><%= risk_score_badge(risk.current_score, risk.criticality) %></td>
+            <td><%= risk.assigned_to&.name %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% end %>
+
+  <h3><%= l(:label_recent_risks) %></h3>
+  <table class="list">
+    <thead>
+      <tr>
+        <th><%= l(:field_title) %></th>
+        <th><%= l(:label_risk_trend) %></th>
+        <th><%= l(:field_status) %></th>
+        <th><%= l(:field_updated_on) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @recent_risks.each do |risk| %>
+        <tr>
+          <td><%= link_to risk.title, risk_path(risk) %></td>
+          <td><%= risk_trend_badge(risk.trend) %></td>
+          <td><%= l(:"risk_status_#{risk.status}") %></td>
+          <td><%= format_time(risk.updated_at) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

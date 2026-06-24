@@ -1,0 +1,6 @@
+<h2><%= l(:label_risk_edit) %></h2>
+
+<%= form_with model: @risk, url: risk_path(@risk), method: :patch do |f| %>
+  <%= render 'form', f: f, risk: @risk %>
+  <p><%= f.submit l(:button_save) %></p>
+<% end %>

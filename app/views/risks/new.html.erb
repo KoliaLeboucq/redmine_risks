@@ -1,0 +1,6 @@
+<h2><%= l(:label_risk_new) %></h2>
+
+<%= form_with model: @risk, url: project_risks_path(@project) do |f| %>
+  <%= render 'form', f: f, risk: @risk %>
+  <p><%= f.submit l(:button_create) %></p>
+<% end %>

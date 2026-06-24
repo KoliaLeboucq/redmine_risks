@@ -1,0 +1,54 @@
+<div class="contextual">
+  <% if User.current.allowed_to?(:manage_risks, @project) %>
+    <%= link_to l(:label_risk_new), new_project_risk_path(@project), class: 'icon icon-add' %>
+  <% end %>
+  <%= link_to l(:label_risk_dashboard), dashboard_project_risks_path(@project), class: 'icon icon-stats' %>
+</div>
+
+<h2><%= l(:label_risks) %></h2>
+
+<div class="risk-filters">
+  <%= form_tag project_risks_path(@project), method: :get do %>
+    <%= label_tag :status, l(:field_status) %>
+    <%= select_tag :status,
+          options_for_select([[l(:label_all), '']] + Risk::STATUSES.map { |s| [l(:"risk_status_#{s}"), s] }, params[:status]),
+          onchange: 'this.form.submit()' %>
+  <% end %>
+</div>
+
+<% if @risks.any? %>
+  <table class="list risks">
+    <thead>
+      <tr>
+        <th><%= l(:field_title) %></th>
+        <th><%= l(:label_risk_category) %></th>
+        <th><%= l(:label_risk_assigned_to) %></th>
+        <th><%= l(:label_risk_initial_score) %></th>
+        <th><%= l(:label_risk_current_score) %></th>
+        <th><%= l(:label_risk_trend) %></th>
+        <th><%= l(:field_status) %></th>
+        <th><%= l(:label_risk_review_date) %></th>
+        <th><%= l(:label_risk_actions_count) %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @risks.each do |risk| %>
+        <tr class="<%= cycle('odd', 'even') %>">
+          <td><%= link_to risk.title, risk_path(risk) %></td>
+          <td><%= l(:"risk_category_#{risk.category}") %></td>
+          <td><%= risk.assigned_to&.name %></td>
+          <td><%= risk_score_badge(risk.initial_score, :low) %></td>
+          <td><%= risk_score_badge(risk.current_score, risk.criticality) %></td>
+          <td><%= risk_trend_badge(risk.trend) %></td>
+          <td><%= l(:"risk_status_#{risk.status}") %></td>
+          <td class="<%= 'overdue' if risk.review_date&.past? && risk.status == 'open' %>">
+            <%= format_date(risk.review_date) %>
+          </td>
+          <td><%= risk.risk_mitigation_actions.open.count %> / <%= risk.risk_mitigation_actions.count %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p class="nodata"><%= l(:label_no_data) %></p>
+<% end %>
